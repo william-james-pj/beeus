@@ -1,16 +1,6 @@
 @import 'fonts';
-
-// Variables
-$max-width: 1100px;
-$border-radius: 16px;
-
-// Colors
-$background-color: rgba(14, 13, 17, 1);
-$primary-color: rgba(33, 43, 57, 1);
-$card-color: rgba(83, 96, 115, 1);
-$disabled-color: rgba(200, 200, 200, 1);
-$text-color: rgba(255, 255, 255, 1);
-$white-color: rgba(255, 255, 255, 1);
+@import 'variables';
+@import 'mixins';
 
 // HTML Elements
 * {
@@ -33,33 +23,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-// Global Mixins
-@mixin transition-ease {
-  transition: all 0.5s ease-in-out;
-}
-
-@mixin media-xs {
-  @media screen and (min-width: 480px) {
-    @content;
-  }
-}
-
-@mixin media-sm {
-  @media screen and (min-width: 481px) and (max-width: 767px) {
-    @content;
-  }
-}
-
-@mixin media-md {
-  @media screen and (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin media-lg {
-  @media screen and (min-width: 1024px) {
-    @content;
-  }
 }
