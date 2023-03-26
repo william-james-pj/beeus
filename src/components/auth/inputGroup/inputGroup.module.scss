@@ -2,21 +2,32 @@
 @import '@/styles/fonts';
 @import '@/styles/mixins';
 
-.container {
-  width: 100%;
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $p-3;
 
-  border-bottom: 1px solid;
-  border-color: $text-color;
-
-  .inputText {
+  .container {
     width: 100%;
-    padding: $p-4;
 
-    color: $text-color;
-    background: transparent;
-    border: none;
+    border-bottom: 1px solid;
+    border-color: $text-color;
 
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    .inputText {
+      width: 100%;
+      padding: $p-4;
+
+      color: $text-color;
+      background: transparent;
+      border: none;
+
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
+  > span {
+    color: $error-color;
+    font-family: $inter-sans;
+    font-size: $font-size-sm;
   }
 }
