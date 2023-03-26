@@ -18,7 +18,7 @@ const SignUp = () => {
           <InputGrup type="email" name="email" placeholder="E-mail" />
           <InputGrup type="password" name="password" placeholder="Senha" />
 
-          <PrimaryButton title="Entrar" />
+          <PrimaryButton title="Cadastrar" />
         </form>
 
         <div className={styles.footer}>
