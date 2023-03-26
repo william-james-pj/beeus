@@ -1,11 +1,27 @@
 import GoogleButton from '@/components/auth/GoogleButton';
 import NavTab from '@/components/auth/NavTab';
 import PrimaryButton from '@/components/auth/PrimaryButton';
-import InputGrup from '@/components/auth/inputGroup';
+import InputGroup from '@/components/auth/inputGroup';
 import AuthLayout from '@/layouts/auth';
+import signupSchema from '@/lib/signupSchema';
 import styles from '@/styles/auth.module.scss';
+import { useFormik } from 'formik';
 
 const SignUp = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: signupSchema,
+    onSubmit,
+  });
+
+  async function onSubmit(values) {
+    console.log(values);
+  }
+
   return (
     <AuthLayout>
       <section className={styles.section}>
@@ -13,10 +29,37 @@ const SignUp = () => {
           <NavTab />
         </div>
 
-        <form className={styles.form}>
-          <InputGrup type="text" name="name" placeholder="Nome" />
-          <InputGrup type="email" name="email" placeholder="E-mail" />
-          <InputGrup type="password" name="password" placeholder="Senha" />
+        <form className={styles.form} onSubmit={formik.handleSubmit}>
+          <InputGroup
+            type="text"
+            name="name"
+            placeholder="Nome"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            error={formik.errors.name}
+            touched={formik.touched.name}
+            handleBlur={formik.handleBlur}
+          />
+          <InputGroup
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.errors.email}
+            touched={formik.touched.email}
+            handleBlur={formik.handleBlur}
+          />
+          <InputGroup
+            type="password"
+            name="password"
+            placeholder="Senha"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.errors.password}
+            touched={formik.touched.password}
+            handleBlur={formik.handleBlur}
+          />
 
           <PrimaryButton title="Cadastrar" />
         </form>
