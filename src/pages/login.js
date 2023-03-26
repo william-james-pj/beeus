@@ -6,6 +6,7 @@ import AuthLayout from '@/layouts/auth';
 import loginSchema from '@/lib/loginSchema';
 import styles from '@/styles/auth.module.scss';
 import { useFormik } from 'formik';
+import { MdOutlineLock, MdOutlineMailOutline } from 'react-icons/md';
 
 const Login = () => {
   const formik = useFormik({
@@ -38,6 +39,7 @@ const Login = () => {
             error={formik.errors.email}
             touched={formik.touched.email}
             handleBlur={formik.handleBlur}
+            optionIcon={<MdOutlineMailOutline size={25} />}
           />
           <InputGroup
             type="password"
@@ -48,6 +50,7 @@ const Login = () => {
             error={formik.errors.password}
             touched={formik.touched.password}
             handleBlur={formik.handleBlur}
+            optionIcon={<MdOutlineLock size={25} />}
           />
 
           <PrimaryButton title="Entrar" />

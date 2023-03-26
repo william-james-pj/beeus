@@ -6,6 +6,11 @@ import AuthLayout from '@/layouts/auth';
 import signupSchema from '@/lib/signupSchema';
 import styles from '@/styles/auth.module.scss';
 import { useFormik } from 'formik';
+import {
+  MdOutlineLock,
+  MdOutlineMailOutline,
+  MdOutlinePersonOutline,
+} from 'react-icons/md';
 
 const SignUp = () => {
   const formik = useFormik({
@@ -39,6 +44,7 @@ const SignUp = () => {
             error={formik.errors.name}
             touched={formik.touched.name}
             handleBlur={formik.handleBlur}
+            optionIcon={<MdOutlinePersonOutline size={25} />}
           />
           <InputGroup
             type="email"
@@ -49,6 +55,7 @@ const SignUp = () => {
             error={formik.errors.email}
             touched={formik.touched.email}
             handleBlur={formik.handleBlur}
+            optionIcon={<MdOutlineMailOutline size={25} />}
           />
           <InputGroup
             type="password"
@@ -59,6 +66,7 @@ const SignUp = () => {
             error={formik.errors.password}
             touched={formik.touched.password}
             handleBlur={formik.handleBlur}
+            optionIcon={<MdOutlineLock size={25} />}
           />
 
           <PrimaryButton title="Cadastrar" />

@@ -9,10 +9,12 @@ const InputGroup = ({
   error,
   touched,
   handleBlur,
+  optionIcon,
 }) => {
   return (
     <div className={styles.inputGroup}>
       <div className={styles.container}>
+        <span>{optionIcon}</span>
         <input
           type={type}
           name={name}
@@ -23,7 +25,11 @@ const InputGroup = ({
           onBlur={handleBlur}
         />
       </div>
-      {error && touched ? <span>{error}</span> : <></>}
+      {error && touched ? (
+        <span className={styles.errorText}>{error}</span>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
