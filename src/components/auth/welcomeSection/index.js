@@ -7,8 +7,10 @@ const WelcomeSection = () => {
       <div className={styles.imageContainer}>
         <Image
           src="/image/welcomeImage.png"
-          alt="Logo"
+          alt="Welcome Image"
           fill
+          sizes="auto"
+          priority
           className={styles.image}
         />
       </div>

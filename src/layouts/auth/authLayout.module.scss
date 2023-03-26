@@ -27,6 +27,7 @@
       display: flex;
       align-items: center;
       padding: $p-4;
+      position: relative;
 
       .image {
         object-fit: contain;

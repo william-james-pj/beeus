@@ -12,6 +12,7 @@ const AuthLayout = ({ children }) => {
               src="/image/logo.png"
               alt="Logo"
               fill
+              sizes="auto"
               className={styles.image}
             />
           </div>

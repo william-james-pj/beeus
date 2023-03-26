@@ -9,6 +9,7 @@ const GoogleButton = () => {
           src="/svg/google.svg"
           alt="Google icon"
           fill
+          sizes="auto"
           className={styles.image}
         />
       </div>
