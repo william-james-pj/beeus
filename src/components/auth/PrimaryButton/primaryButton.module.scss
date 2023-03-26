@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.primaryButton {
+  width: 100%;
+  background-color: $text-color;
+  border-radius: $p-1-5;
+  cursor: pointer;
+
+  padding: $p-3;
+
+  > p {
+    color: $background-color;
+    font-size: $font-size-md;
+    font-family: $inter-sans;
+    font-weight: 600;
+  }
+
+  :hover {
+    opacity: 0.6;
+  }
+}

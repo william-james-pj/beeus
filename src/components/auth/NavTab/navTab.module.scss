@@ -1,0 +1,59 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.navTab {
+  display: flex;
+  gap: $p-4;
+
+  @include media-lg {
+    gap: $p-6;
+  }
+
+  .item {
+    background: $background-color;
+    border: none;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    :hover {
+      opacity: 0.6;
+    }
+
+    &__active {
+      background: $text-color;
+      border-radius: $p-6;
+      padding: $p-2 $p-3;
+
+      cursor: pointer;
+      :hover {
+        opacity: 0.6;
+      }
+    }
+
+    @include media-md {
+      &__active {
+        padding: $p-2 $p-4;
+      }
+    }
+
+    @include media-lg {
+      &__active {
+        padding: $p-2 $p-6;
+      }
+    }
+  }
+
+  .title {
+    font-size: $font-size-md;
+    font-family: $cinzel-cursive;
+    color: $text-color;
+
+    &__active {
+      font-size: $font-size-md;
+      font-family: $cinzel-cursive;
+      color: $background-color;
+    }
+  }
+}

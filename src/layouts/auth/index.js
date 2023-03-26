@@ -25,9 +25,9 @@ const AuthLayout = ({ children }) => {
           </div>
         </div>
 
-        <div className={styles.contentTest}>
-          <div className={styles.contentTest__left} />
-          <div className={styles.contentTest__right} />
+        <div className={styles.backgroundAux}>
+          <div className={styles.backgroundAux__left} />
+          <div className={styles.backgroundAux__right} />
         </div>
       </div>
     </div>
