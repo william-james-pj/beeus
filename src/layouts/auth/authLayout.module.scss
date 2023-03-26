@@ -1,0 +1,94 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+  @include media-lg {
+    height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    margin: auto;
+  }
+
+  .nav {
+    height: 100px;
+    background-color: $background-color;
+    color: $text-color;
+
+    &__content {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 16px;
+
+      .image {
+        object-fit: contain;
+        width: unset !important;
+        position: relative !important;
+        height: 90% !important;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    position: relative;
+
+    > div {
+      display: grid;
+
+      @include media-lg {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    &__left {
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      background-color: $background-color;
+      order: 1;
+
+      @include media-lg {
+        order: 0;
+      }
+    }
+
+    &__right {
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      background-color: $primary-color;
+    }
+
+    .contentTest {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+
+      @include media-lg {
+        display: flex;
+      }
+
+      &__left {
+        background-color: $background-color;
+        flex: 1;
+      }
+
+      &__right {
+        background-color: $primary-color;
+        flex: 1;
+      }
+    }
+  }
+}
