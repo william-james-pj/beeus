@@ -10,6 +10,8 @@
 
   padding: $p-3;
 
+  transition: all 2s ease-in-out;
+
   > p {
     color: $background-color;
     font-size: $font-size-md;

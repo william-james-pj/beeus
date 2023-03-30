@@ -7,14 +7,14 @@ const WelcomeSection = () => {
       <div className={styles.imageContainer}>
         <Image
           src="/image/welcomeImage.png"
-          alt="Welcome Image"
+          alt="Imagem de boas-vindas"
           fill
           sizes="auto"
           priority
           className={styles.image}
         />
       </div>
-      <h2 className={styles.title}>Bem vindo ao Beeus!</h2>
+      <h1 className={styles.title}>Bem vindo ao Beeus!</h1>
       <p className={styles.subTitle}>
         Deixe seu artigo para a comunidade e ganhe pontos no ranking!
       </p>

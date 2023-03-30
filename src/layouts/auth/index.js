@@ -5,8 +5,8 @@ import styles from './authLayout.module.scss';
 const AuthLayout = ({ children }) => {
   return (
     <div className={styles.layout}>
-      <nav className={styles.nav}>
-        <div className={styles.container}>
+      <header className={styles.nav}>
+        <nav className={styles.container}>
           <div className={styles.nav__content}>
             <Image
               src="/image/logo.png"
@@ -16,8 +16,8 @@ const AuthLayout = ({ children }) => {
               className={styles.image}
             />
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
       <div className={styles.content}>
         <div className={styles.container}>
           <div className={styles.content__left}>{children}</div>

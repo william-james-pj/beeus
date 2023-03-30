@@ -31,7 +31,7 @@ const SignUp = () => {
   return (
     <>
       <Head>
-        <title>Beeus</title>
+        <title>Tela de cadastro | Beeus</title>
       </Head>
       <main>
         <AuthLayout>

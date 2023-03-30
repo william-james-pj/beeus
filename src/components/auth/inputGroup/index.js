@@ -25,11 +25,7 @@ const InputGroup = ({
           onBlur={handleBlur}
         />
       </div>
-      {error && touched ? (
-        <span className={styles.errorText}>{error}</span>
-      ) : (
-        <></>
-      )}
+      {error && touched && <span className={styles.errorText}>{error}</span>}
     </div>
   );
 };

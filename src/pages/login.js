@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Beeus</title>
+        <title>Tela de login | Beeus</title>
       </Head>
       <main>
         <AuthLayout>

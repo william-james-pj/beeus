@@ -3,18 +3,18 @@ import styles from './googleButton.module.scss';
 
 const GoogleButton = () => {
   return (
-    <button type="button" className={styles.googleButton}>
+    <a className={styles.googleButton}>
       <div className={styles.imageContainer}>
         <Image
           src="/svg/google.svg"
-          alt="Google icon"
+          alt="Ícone do Google"
           fill
           sizes="auto"
           className={styles.image}
         />
       </div>
-      <p>Entrar com o google</p>
-    </button>
+      <span>Entrar com o google</span>
+    </a>
   );
 };
 
