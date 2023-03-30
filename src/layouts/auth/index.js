@@ -1,4 +1,4 @@
-import WelcomeSection from '@/components/auth/welcomeSection';
+import WelcomeSection from '@/components/auth/WelcomeSection';
 import Image from 'next/image';
 import styles from './authLayout.module.scss';
 
