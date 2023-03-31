@@ -9,7 +9,7 @@ const signupSchema = Yup.object().shape({
     .email('Por favor, insira um endereço de e-mail válido.')
     .required('Por favor, preencha este campo.'),
   password: Yup.string()
-    .min(6, 'Sua senha deve ter pelo menos 4 caracteres.')
+    .min(4, 'Sua senha deve ter pelo menos 4 caracteres.')
     .max(20, 'A senha deve ter no máximo 20 caracteres.')
     .required('Por favor, preencha este campo.'),
 });
