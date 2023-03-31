@@ -1,5 +1,6 @@
+import { AuthProvider } from '@/contexts/auth';
 import '@/styles/globals.scss';
-import { SessionProvider } from 'next-auth/react';
+
 import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
@@ -8,9 +9,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <SessionProvider session={pageProps.session}>
+      <AuthProvider>
         <Component {...pageProps} />
-      </SessionProvider>
+      </AuthProvider>
     </>
   );
 }

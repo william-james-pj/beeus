@@ -1,9 +1,7 @@
-import { getSession } from 'next-auth/react';
-
 export const requireAuthentication = async (context, callback) => {
-  const session = await getSession(context);
+  const token = false;
 
-  if (!session) {
+  if (!token) {
     return {
       redirect: {
         destination: '/login',
@@ -12,5 +10,5 @@ export const requireAuthentication = async (context, callback) => {
     };
   }
 
-  return callback({ session });
+  return callback();
 };

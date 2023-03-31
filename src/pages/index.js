@@ -13,9 +13,9 @@ const Home = () => {
 };
 
 export async function getServerSideProps(context) {
-  return requireAuthentication(context, ({ session }) => {
+  return requireAuthentication(context, () => {
     return {
-      props: { session },
+      props: {},
     };
   });
 }
