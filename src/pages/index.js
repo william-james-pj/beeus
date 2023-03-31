@@ -1,6 +1,7 @@
+import { requireAuthentication } from '@/lib/requireAuthentication';
 import Head from 'next/head';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
@@ -9,4 +10,14 @@ export default function Home() {
       <main></main>
     </>
   );
+};
+
+export async function getServerSideProps(context) {
+  return requireAuthentication(context, () => {
+    return {
+      props: {},
+    };
+  });
 }
+
+export default Home;

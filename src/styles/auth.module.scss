@@ -1,0 +1,66 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.section {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $p-6;
+
+  padding: $p-8 0;
+
+  @include media-md {
+    gap: $p-7;
+  }
+
+  @include media-lg {
+    padding: 0;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+
+    .title {
+      font-size: $font-size-xxl;
+      font-family: $cinzel-cursive;
+      padding-bottom: $p-4;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: $p-6;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: $p-6;
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: $p-4;
+
+      .line {
+        width: 30%;
+        height: 1px;
+        background-color: $text-color;
+
+        @include media-lg {
+          width: 25%;
+        }
+      }
+
+      > p {
+        font-size: $font-size-sm;
+        font-family: $inter-sans;
+      }
+    }
+  }
+}
