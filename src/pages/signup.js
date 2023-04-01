@@ -2,11 +2,13 @@ import GoogleButton from '@/components/auth/GoogleButton';
 import InputGroup from '@/components/auth/InputGroup';
 import NavTab from '@/components/auth/NavTab';
 import PrimaryButton from '@/components/auth/PrimaryButton';
+import { useAuth } from '@/contexts/auth';
 import AuthLayout from '@/layouts/auth';
 import signupSchema from '@/lib/signupSchema';
 import styles from '@/styles/auth.module.scss';
 import { useFormik } from 'formik';
 import Head from 'next/head';
+import { useState } from 'react';
 import {
   MdOutlineLock,
   MdOutlineMailOutline,
@@ -14,6 +16,9 @@ import {
 } from 'react-icons/md';
 
 const SignUp = () => {
+  const [errorMsg, setErrorMsg] = useState('');
+  const { signUp, isLoading } = useAuth();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -24,8 +29,21 @@ const SignUp = () => {
     onSubmit,
   });
 
-  async function onSubmit(values) {
-    console.log(values);
+  async function onSubmit(values, { resetForm }) {
+    setErrorMsg('');
+
+    let { message } = await signUp({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+
+    resetForm({ values: '' });
   }
 
   return (
@@ -75,7 +93,9 @@ const SignUp = () => {
                 optionIcon={<MdOutlineLock size={25} />}
               />
 
-              <PrimaryButton title="Cadastrar" />
+              {errorMsg && <span className={styles.errorMsg}>{errorMsg}</span>}
+
+              <PrimaryButton title="Cadastrar" isLoading={isLoading} />
             </form>
 
             <div className={styles.footer}>

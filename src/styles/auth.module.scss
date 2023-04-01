@@ -36,6 +36,13 @@
     gap: $p-6;
   }
 
+  .errorMsg {
+    text-align: center;
+    color: $error-color;
+    font-size: $font-size-sm;
+    font-family: $inter-sans;
+  }
+
   .footer {
     display: flex;
     flex-direction: column;

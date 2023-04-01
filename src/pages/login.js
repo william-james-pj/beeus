@@ -2,14 +2,19 @@ import GoogleButton from '@/components/auth/GoogleButton';
 import InputGroup from '@/components/auth/InputGroup';
 import NavTab from '@/components/auth/NavTab';
 import PrimaryButton from '@/components/auth/PrimaryButton';
+import { useAuth } from '@/contexts/auth';
 import AuthLayout from '@/layouts/auth';
 import loginSchema from '@/lib/loginSchema';
 import styles from '@/styles/auth.module.scss';
 import { useFormik } from 'formik';
 import Head from 'next/head';
+import { useState } from 'react';
 import { MdOutlineLock, MdOutlineMailOutline } from 'react-icons/md';
 
 const Login = () => {
+  const [errorMsg, setErrorMsg] = useState('');
+  const { signIn, isLoading } = useAuth();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -19,8 +24,20 @@ const Login = () => {
     onSubmit,
   });
 
-  async function onSubmit(values) {
-    console.log(values);
+  async function onSubmit(values, { resetForm }) {
+    setErrorMsg('');
+
+    let { message } = await signIn({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+
+    resetForm({ values: '' });
   }
 
   return (
@@ -59,7 +76,9 @@ const Login = () => {
                 optionIcon={<MdOutlineLock size={25} />}
               />
 
-              <PrimaryButton title="Entrar" />
+              {errorMsg && <span className={styles.errorMsg}>{errorMsg}</span>}
+
+              <PrimaryButton title="Entrar" isLoading={isLoading} />
             </form>
 
             <div className={styles.footer}>
