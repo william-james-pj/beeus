@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const signupSchema = Yup.object().shape({
+export const signupSchema = Yup.object().shape({
   name: Yup.string()
     .min(4, 'Por favor, insira um nome válido.')
     .max(50, 'O nome deve ter no máximo 50 caracteres.')
@@ -13,5 +13,3 @@ const signupSchema = Yup.object().shape({
     .max(20, 'A senha deve ter no máximo 20 caracteres.')
     .required('Por favor, preencha este campo.'),
 });
-
-export default signupSchema;

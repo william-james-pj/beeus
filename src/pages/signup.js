@@ -1,10 +1,10 @@
-import GoogleButton from '@/components/auth/GoogleButton';
-import InputGroup from '@/components/auth/InputGroup';
-import NavTab from '@/components/auth/NavTab';
-import PrimaryButton from '@/components/auth/PrimaryButton';
+import { GoogleButton } from '@/components/auth/GoogleButton';
+import { InputGroup } from '@/components/auth/InputGroup';
+import { NavTab } from '@/components/auth/NavTab';
+import { PrimaryButton } from '@/components/auth/PrimaryButton';
 import { useAuth } from '@/contexts/authContext';
-import AuthLayout from '@/layouts/auth';
-import signupSchema from '@/lib/signupSchema';
+import { AuthLayout } from '@/layouts/auth';
+import { signupSchema } from '@/lib/signupSchema';
 import styles from '@/styles/auth.module.scss';
 import { useFormik } from 'formik';
 import Head from 'next/head';

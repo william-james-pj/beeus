@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './googleButton.module.scss';
 
-const GoogleButton = () => {
+export const GoogleButton = () => {
   return (
     <a className={styles.googleButton}>
       <div className={styles.imageContainer}>
@@ -17,5 +17,3 @@ const GoogleButton = () => {
     </a>
   );
 };
-
-export default GoogleButton;

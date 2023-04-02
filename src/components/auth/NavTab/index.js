@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './navTab.module.scss';
 
-const NavTab = ({ isLogin }) => {
+export const NavTab = ({ isLogin }) => {
   return (
     <div className={styles.navTab}>
       <Link
@@ -22,5 +22,3 @@ const NavTab = ({ isLogin }) => {
     </div>
   );
 };
-
-export default NavTab;
