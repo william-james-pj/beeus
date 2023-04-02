@@ -39,7 +39,8 @@ export async function signInRequest({ email, password }) {
     return response.json();
   } catch (err) {
     return {
-      message: 'email ou senha incorretos',
+      message:
+        'Desculpe, ocorreu um erro inesperado. Tente novamente mais tarde.',
     };
   }
 }

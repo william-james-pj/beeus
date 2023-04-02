@@ -1,13 +1,17 @@
 import { requireAuthentication } from '@/lib/requireAuthentication';
 import Head from 'next/head';
 
+import { MainLayout } from '@/layouts/main';
+
 const Home = () => {
   return (
     <>
       <Head>
         <title>Beeus</title>
       </Head>
-      <main></main>
+      <main>
+        <MainLayout></MainLayout>
+      </main>
     </>
   );
 };

@@ -2,7 +2,7 @@ import GoogleButton from '@/components/auth/GoogleButton';
 import InputGroup from '@/components/auth/InputGroup';
 import NavTab from '@/components/auth/NavTab';
 import PrimaryButton from '@/components/auth/PrimaryButton';
-import { useAuth } from '@/contexts/auth';
+import { useAuth } from '@/contexts/authContext';
 import AuthLayout from '@/layouts/auth';
 import loginSchema from '@/lib/loginSchema';
 import styles from '@/styles/auth.module.scss';

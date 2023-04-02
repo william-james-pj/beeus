@@ -1,6 +1,6 @@
 import { signInRequest, signUpRequest } from '@/services/authService';
 import Router from 'next/router';
-import { parseCookies, setCookie } from 'nookies';
+import { destroyCookie, parseCookies, setCookie } from 'nookies';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext({});
@@ -47,6 +47,11 @@ export function AuthProvider({ children }) {
     setIsLoading(false);
   }
 
+  function logout() {
+    Router.push('/login');
+    destroyCookie(undefined, 'beeus-token');
+  }
+
   useEffect(() => {
     const { 'beeus-token': token } = parseCookies();
 
@@ -57,7 +62,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ isUserAuthenticated, signUp, isLoading, signIn }}
+      value={{ isUserAuthenticated, isLoading, signUp, signIn, logout }}
     >
       {children}
     </AuthContext.Provider>

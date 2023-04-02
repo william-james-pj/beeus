@@ -1,4 +1,4 @@
-import { AuthProvider } from '@/contexts/auth';
+import { AuthProvider } from '@/contexts/authContext';
 import '@/styles/globals.scss';
 
 import Head from 'next/head';
