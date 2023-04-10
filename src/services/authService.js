@@ -1,6 +1,6 @@
 export async function signUpRequest({ name, email, password }) {
   try {
-    let response = await fetch(
+    const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
       {
         method: 'POST',
@@ -27,7 +27,7 @@ export async function signUpRequest({ name, email, password }) {
 
 export async function signInRequest({ email, password }) {
   try {
-    let response = await fetch(
+    const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
       {
         method: 'POST',

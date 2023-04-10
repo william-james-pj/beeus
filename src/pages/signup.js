@@ -32,7 +32,7 @@ const SignUp = () => {
   async function onSubmit(values, { resetForm }) {
     setErrorMsg('');
 
-    let { message } = await signUp({
+    const { message } = await signUp({
       name: values.name,
       email: values.email,
       password: values.password,

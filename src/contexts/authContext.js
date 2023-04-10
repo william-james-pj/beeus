@@ -61,7 +61,7 @@ export function AuthProvider({ children }) {
 
     if (token) {
       const jsonObj = localStorage.getItem('beeus-user');
-      let user = JSON.parse(jsonObj);
+      const user = JSON.parse(jsonObj);
       setUser(user);
       Router.push('/');
     }

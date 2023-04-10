@@ -27,7 +27,7 @@ const Login = () => {
   async function onSubmit(values, { resetForm }) {
     setErrorMsg('');
 
-    let { message } = await signIn({
+    const { message } = await signIn({
       email: values.email,
       password: values.password,
     });
