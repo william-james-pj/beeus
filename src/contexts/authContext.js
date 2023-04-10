@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
     }
 
     setCookie(undefined, 'beeus-token', access_token, {
-      maxAge: 60 * 60 * 24 * 3, // 3 days
+      maxAge: 60 * 60 * 24 * 30, // 30 days
     });
 
     const user = { name, email };
