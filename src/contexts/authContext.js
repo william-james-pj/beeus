@@ -42,13 +42,17 @@ export function AuthProvider({ children }) {
       maxAge: 60 * 60 * 24 * 3, // 3 days
     });
 
-    setUser({ name, email });
+    const user = { name, email };
+    localStorage.setItem('beeus-user', JSON.stringify(user));
+    setUser(user);
+
     Router.push('/');
     setIsLoading(false);
   }
 
   function logout() {
     Router.push('/login');
+    localStorage.removeItem('beeus-user');
     destroyCookie(undefined, 'beeus-token');
   }
 
@@ -56,7 +60,10 @@ export function AuthProvider({ children }) {
     const { 'beeus-token': token } = parseCookies();
 
     if (token) {
-      //recoverUserInfo
+      const jsonObj = localStorage.getItem('beeus-user');
+      let user = JSON.parse(jsonObj);
+      setUser(user);
+      Router.push('/');
     }
   }, []);
 
