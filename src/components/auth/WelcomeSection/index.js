@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './welcomeSection.module.scss';
 
-const WelcomeSection = () => {
+export const WelcomeSection = () => {
   return (
     <div className={styles.section}>
       <div className={styles.imageContainer}>
@@ -21,5 +21,3 @@ const WelcomeSection = () => {
     </div>
   );
 };
-
-export default WelcomeSection;

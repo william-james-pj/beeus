@@ -1,8 +1,8 @@
-import WelcomeSection from '@/components/auth/WelcomeSection';
+import { WelcomeSection } from '@/components/auth/WelcomeSection';
 import Image from 'next/image';
 import styles from './authLayout.module.scss';
 
-const AuthLayout = ({ children }) => {
+export const AuthLayout = ({ children }) => {
   return (
     <div className={styles.layout}>
       <header className={styles.nav}>
@@ -34,5 +34,3 @@ const AuthLayout = ({ children }) => {
     </div>
   );
 };
-
-export default AuthLayout;

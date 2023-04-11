@@ -1,5 +1,7 @@
+import { parseCookies } from 'nookies';
+
 export const requireAuthentication = async (context, callback) => {
-  const token = false;
+  const { ['beeus-token']: token } = parseCookies(context);
 
   if (!token) {
     return {

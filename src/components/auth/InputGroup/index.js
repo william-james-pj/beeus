@@ -1,6 +1,6 @@
 import styles from './inputGroup.module.scss';
 
-const InputGroup = ({
+export const InputGroup = ({
   type,
   name,
   placeholder,
@@ -29,5 +29,3 @@ const InputGroup = ({
     </div>
   );
 };
-
-export default InputGroup;
