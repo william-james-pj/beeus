@@ -1,7 +1,5 @@
 export async function createDocumentationRequest({ title, content, token }) {
   try {
-    console.log(token);
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/documentation`,
       {

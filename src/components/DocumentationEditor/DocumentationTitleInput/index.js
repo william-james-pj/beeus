@@ -6,6 +6,7 @@ export const DocumentationTitleInput = ({
   placeholder,
   value,
   onChange,
+  error,
   touched,
   handleBlur,
 }) => {
@@ -22,6 +23,7 @@ export const DocumentationTitleInput = ({
           onBlur={handleBlur}
         />
       </div>
+      {error && touched && <span className={styles.errorText}>{error}</span>}
     </div>
   );
 };

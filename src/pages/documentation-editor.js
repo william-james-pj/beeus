@@ -7,6 +7,7 @@ import { TextEditor } from '@/components/DocumentationEditor/TextEditor';
 import { useAuth } from '@/contexts/authContext';
 import { useDocumentationEditor } from '@/contexts/documentationEditorContext';
 import { MainLayout } from '@/layouts/main';
+import { documentationEditorSchema } from '@/lib/documentationEditorSchema';
 import styles from '@/styles/documentationEditor.module.scss';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -23,6 +24,7 @@ const DocumentationEditor = () => {
       title: '',
       content: '',
     },
+    validationSchema: documentationEditorSchema,
     onSubmit,
   });
 
@@ -71,6 +73,7 @@ const DocumentationEditor = () => {
               name="title"
               value={formik.values.title}
               onChange={formik.handleChange}
+              error={formik.errors.title}
               touched={formik.touched.title}
               handleBlur={formik.handleBlur}
             />
