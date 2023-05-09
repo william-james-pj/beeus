@@ -1,0 +1,47 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.saveDocumentationButton {
+  width: auto;
+  min-width: 6rem;
+  background-color: $card-color;
+
+  padding: $p-3;
+  border: 0;
+  border-radius: $p-1;
+
+  cursor: pointer;
+  transition: all 2s ease-in-out;
+
+  :hover {
+    opacity: 0.6;
+  }
+
+  &:disabled {
+    cursor: progress;
+  }
+
+  > span {
+    color: $text-color;
+    font-size: $font-size-md;
+    font-family: $inter-sans;
+    font-weight: 600;
+  }
+
+  .spinner {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

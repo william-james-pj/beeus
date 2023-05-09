@@ -1,0 +1,38 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.documentEditor {
+  display: flex;
+  flex-direction: column;
+
+  padding: $p-5 $p-4 0;
+  gap: 3rem;
+
+  .header {
+    width: 100%;
+
+    padding: $p-2 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .closeButton {
+      padding: $p-0-5;
+
+      cursor: pointer;
+      transition: all 2s ease-in-out;
+
+      :hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: $p-8;
+  }
+}
