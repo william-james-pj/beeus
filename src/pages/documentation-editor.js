@@ -17,7 +17,8 @@ const DocumentationEditor = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
   const { userToken } = useAuth();
-  const { isLoading, createDocumentation } = useDocumentationEditor();
+  const { isLoading, createDocumentation, closeEditor } =
+    useDocumentationEditor();
 
   const formik = useFormik({
     initialValues: {
@@ -29,6 +30,12 @@ const DocumentationEditor = () => {
   });
 
   async function onSubmit(values) {
+    if (
+      !window.confirm(
+        'Você tem certeza de que deseja publicar esta documentação?',
+      )
+    )
+      return;
     setErrorMsg('');
 
     const { message } = await createDocumentation({
@@ -43,6 +50,14 @@ const DocumentationEditor = () => {
     }
   }
 
+  function onClose() {
+    if (
+      !window.confirm('Tem certeza de que deseja descartar esta documentação?')
+    )
+      return;
+    closeEditor();
+  }
+
   return (
     <>
       <Head>
@@ -55,7 +70,7 @@ const DocumentationEditor = () => {
             onSubmit={formik.handleSubmit}
           >
             <div className={styles.header}>
-              <div className={styles.closeButton} onClick={() => {}}>
+              <div className={styles.closeButton} onClick={onClose}>
                 <MdOutlineClose size={28} />
               </div>
 
