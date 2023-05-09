@@ -7,6 +7,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [userToken, setUserToken] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const isUserAuthenticated = () => !!user;
@@ -45,6 +46,7 @@ export function AuthProvider({ children }) {
     const user = { name, email };
     localStorage.setItem('beeus-user', JSON.stringify(user));
     setUser(user);
+    setUserToken(access_token);
 
     Router.push('/');
     setIsLoading(false);
@@ -63,13 +65,20 @@ export function AuthProvider({ children }) {
       const jsonObj = localStorage.getItem('beeus-user');
       const user = JSON.parse(jsonObj);
       setUser(user);
-      Router.push('/');
+      setUserToken(token);
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isUserAuthenticated, isLoading, signUp, signIn, logout }}
+      value={{
+        isUserAuthenticated,
+        userToken,
+        isLoading,
+        signUp,
+        signIn,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -4,12 +4,20 @@ import Head from 'next/head';
 import { DocumentationTitleInput } from '@/components/DocumentationEditor/DocumentationTitleInput';
 import { SaveDocumentationButton } from '@/components/DocumentationEditor/SaveDocumentationButton';
 import { TextEditor } from '@/components/DocumentationEditor/TextEditor';
+import { useAuth } from '@/contexts/authContext';
+import { useDocumentationEditor } from '@/contexts/documentationEditorContext';
 import { MainLayout } from '@/layouts/main';
 import styles from '@/styles/documentationEditor.module.scss';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 
 const DocumentationEditor = () => {
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const { userToken } = useAuth();
+  const { isLoading, createDocumentation } = useDocumentationEditor();
+
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -18,7 +26,20 @@ const DocumentationEditor = () => {
     onSubmit,
   });
 
-  async function onSubmit(values) {}
+  async function onSubmit(values) {
+    setErrorMsg('');
+
+    const { message } = await createDocumentation({
+      title: values.title,
+      content: values.content,
+      token: userToken,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+  }
 
   return (
     <>
@@ -36,8 +57,14 @@ const DocumentationEditor = () => {
                 <MdOutlineClose size={28} />
               </div>
 
-              <SaveDocumentationButton title="Publicar" isLoading={false} />
+              <SaveDocumentationButton title="Publicar" isLoading={isLoading} />
             </div>
+
+            {errorMsg && (
+              <div className={styles.errorContainer}>
+                <span className={styles.errorMsg}>{errorMsg}</span>
+              </div>
+            )}
 
             <DocumentationTitleInput
               placeholder="Título do documento aqui..."

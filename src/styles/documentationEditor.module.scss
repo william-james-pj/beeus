@@ -30,9 +30,20 @@
     }
   }
 
-  .form {
+  .errorContainer {
+    background-color: $background-color;
+
+    padding: $p-3;
+    border-radius: $p-1;
+
     display: flex;
-    flex-direction: column;
-    gap: $p-8;
+    justify-content: center;
+
+    .errorMsg {
+      text-align: center;
+      color: $error-color;
+      font-size: $font-size-sm;
+      font-family: $inter-sans;
+    }
   }
 }
