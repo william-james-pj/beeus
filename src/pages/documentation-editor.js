@@ -5,7 +5,7 @@ import { DocumentationTitleInput } from '@/components/DocumentationEditor/Docume
 import { SaveDocumentationButton } from '@/components/DocumentationEditor/SaveDocumentationButton';
 import { TextEditor } from '@/components/DocumentationEditor/TextEditor';
 import { useAuth } from '@/contexts/authContext';
-import { useDocumentationEditor } from '@/contexts/documentationEditorContext';
+import { useDocumentationEditor } from '@/hooks/useDocumentationEditor';
 import { MainLayout } from '@/layouts/main';
 import { documentationEditorSchema } from '@/lib/documentationEditorSchema';
 import styles from '@/styles/documentationEditor.module.scss';

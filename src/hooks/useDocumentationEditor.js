@@ -1,10 +1,8 @@
 import { createDocumentationRequest } from '@/services/documentationEditorService';
 import { useRouter } from 'next/router';
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
 
-export const DocumentationEditorContext = createContext({});
-
-export function DocumentationEditorProvider({ children }) {
+export function useDocumentationEditor() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +18,7 @@ export function DocumentationEditorProvider({ children }) {
     if (!status) {
       setIsLoading(false);
       return {
-        message:
+        errorMessage:
           'Erro na publicação da documentação. Tente novamente mais tarde.',
       };
     }
@@ -30,18 +28,8 @@ export function DocumentationEditorProvider({ children }) {
   }
 
   function closeEditor() {
-    // clear selected documentation
     router.back();
   }
 
-  return (
-    <DocumentationEditorContext.Provider
-      value={{ isLoading, createDocumentation, closeEditor }}
-    >
-      {children}
-    </DocumentationEditorContext.Provider>
-  );
+  return { isLoading, createDocumentation, closeEditor };
 }
-
-export const useDocumentationEditor = () =>
-  useContext(DocumentationEditorContext);
