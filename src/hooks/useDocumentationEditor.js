@@ -6,12 +6,13 @@ export function useDocumentationEditor() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  async function createDocumentation({ title, content, token }) {
+  async function createDocumentation({ title, content, tags, token }) {
     setIsLoading(true);
 
     const { status } = await createDocumentationRequest({
       title,
       content,
+      tags,
       token,
     });
 

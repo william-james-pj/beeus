@@ -1,10 +1,15 @@
-export async function createDocumentationRequest({ title, content, token }) {
+export async function createDocumentationRequest({
+  title,
+  content,
+  tags,
+  token,
+}) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/documentation`,
       {
         method: 'POST',
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify({ title, content, tags }),
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

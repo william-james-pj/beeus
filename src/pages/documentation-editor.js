@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { DocumentationTitleInput } from '@/components/DocumentationEditor/DocumentationTitleInput';
 import { SaveDocumentationButton } from '@/components/DocumentationEditor/SaveDocumentationButton';
+import { TagsInput } from '@/components/DocumentationEditor/TagsInput';
 import { TextEditor } from '@/components/DocumentationEditor/TextEditor';
 import { useAuth } from '@/contexts/authContext';
 import { useDocumentationEditor } from '@/hooks/useDocumentationEditor';
@@ -23,6 +24,7 @@ const DocumentationEditor = () => {
   const formik = useFormik({
     initialValues: {
       title: '',
+      tags: [],
       content: '',
     },
     validationSchema: documentationEditorSchema,
@@ -41,6 +43,7 @@ const DocumentationEditor = () => {
     const { message } = await createDocumentation({
       title: values.title,
       content: values.content,
+      tags: values.tags,
       token: userToken,
     });
 
@@ -92,6 +95,8 @@ const DocumentationEditor = () => {
               touched={formik.touched.title}
               handleBlur={formik.handleBlur}
             />
+
+            <TagsInput formik={formik} />
 
             <TextEditor onChange={formik.handleChange} />
           </form>
