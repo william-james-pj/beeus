@@ -2,6 +2,16 @@ import { FieldArray, FormikProvider } from 'formik';
 import styles from './tagsInput.module.scss';
 
 export const TagsInput = ({ formik }) => {
+  const handleTagsWrite = (event, arrayHelpers) => {
+    if (event.key !== 'Enter') return;
+
+    event.preventDefault();
+    const value = event.target.value;
+    if (!value.trim()) return;
+
+    arrayHelpers.push(value);
+    event.target.value = '';
+  };
   return (
     <FormikProvider value={formik}>
       <FieldArray
@@ -23,14 +33,7 @@ export const TagsInput = ({ formik }) => {
               type="text"
               placeholder="Tags do documento aqui..."
               className={styles.inputText}
-              onKeyDown={(e) => {
-                if (e.key !== 'Enter') return;
-                e.preventDefault();
-                const value = e.target.value;
-                if (!value.trim()) return;
-                arrayHelpers.push(value);
-                e.target.value = '';
-              }}
+              onKeyDown={(e) => handleTagsWrite(e, arrayHelpers)}
             />
           </div>
         )}

@@ -29,6 +29,7 @@ export const TextEditor = ({ onChange }) => {
         lang={'pt_br'}
         setOptions={options}
         placeholder="Por favor digite aqui..."
+        setDefaultStyle="font-size:20px;"
         onChange={(e) => {
           onChange({ target: { name: 'content', value: e } });
         }}
