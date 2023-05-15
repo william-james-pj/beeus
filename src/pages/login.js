@@ -40,57 +40,81 @@ const Login = () => {
     resetForm({ values: '' });
   }
 
+  async function loginWithGoogle(googleUser) {
+    const { email, sub } = googleUser;
+    setErrorMsg('');
+
+    const { message } = await signIn({
+      email: email,
+      password: sub,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+  }
+
+  function setGoogleErrorMessage() {
+    setErrorMsg(
+      'Falha ao autenticar com o Google. Tente novamente mais tarde.',
+    );
+  }
+
   return (
     <>
       <Head>
         <title>Tela de login | Beeus</title>
       </Head>
       <main>
-          <AuthLayout>
-            <section className={styles.section}>
-              <div className={styles.header}>
-                <NavTab isLogin />
+        <AuthLayout>
+          <section className={styles.section}>
+            <div className={styles.header}>
+              <NavTab isLogin />
+            </div>
+
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
+              <InputGroup
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.errors.email}
+                touched={formik.touched.email}
+                handleBlur={formik.handleBlur}
+                optionIcon={<MdOutlineMailOutline size={25} />}
+              />
+              <InputGroup
+                type="password"
+                name="password"
+                placeholder="Senha"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={formik.errors.password}
+                touched={formik.touched.password}
+                handleBlur={formik.handleBlur}
+                optionIcon={<MdOutlineLock size={25} />}
+              />
+
+              {errorMsg && <span className={styles.errorMsg}>{errorMsg}</span>}
+
+              <PrimaryButton title="Entrar" isLoading={isLoading} />
+            </form>
+
+            <div className={styles.footer}>
+              <div className={styles.row}>
+                <div className={styles.line} />
+                <p>Ou</p>
+                <div className={styles.line} />
               </div>
-
-              <form className={styles.form} onSubmit={formik.handleSubmit}>
-                <InputGroup
-                  type="email"
-                  name="email"
-                  placeholder="E-mail"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  error={formik.errors.email}
-                  touched={formik.touched.email}
-                  handleBlur={formik.handleBlur}
-                  optionIcon={<MdOutlineMailOutline size={25} />}
-                />
-                <InputGroup
-                  type="password"
-                  name="password"
-                  placeholder="Senha"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  error={formik.errors.password}
-                  touched={formik.touched.password}
-                  handleBlur={formik.handleBlur}
-                  optionIcon={<MdOutlineLock size={25} />}
-                />
-
-                {errorMsg && <span className={styles.errorMsg}>{errorMsg}</span>}
-
-                <PrimaryButton title="Entrar" isLoading={isLoading} />
-              </form>
-
-              <div className={styles.footer}>
-                <div className={styles.row}>
-                  <div className={styles.line} />
-                  <p>Ou</p>
-                  <div className={styles.line} />
-                </div>
-                <GoogleButton/>
-              </div>
-            </section>
-          </AuthLayout>
+              <GoogleButton
+                handleSuccess={loginWithGoogle}
+                handleError={setGoogleErrorMessage}
+              />
+            </div>
+          </section>
+        </AuthLayout>
       </main>
     </>
   );
