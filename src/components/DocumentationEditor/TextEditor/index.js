@@ -21,13 +21,14 @@ const options = {
   ],
 };
 
-export const TextEditor = ({ onChange }) => {
+export const TextEditor = ({ onChange, value }) => {
   return (
     <div className={styles.textEditor}>
       <SunEditor
         name="content"
         lang={'pt_br'}
         setOptions={options}
+        setContents={value}
         placeholder="Por favor digite aqui..."
         setDefaultStyle="font-size:20px;"
         onChange={(e) => {
