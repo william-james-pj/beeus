@@ -1,29 +1,26 @@
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
+import styles from './googleButton.module.scss';
 
 export const GoogleButton = () => {
-  const clientId = "139750766499-mgrc2tcu78h56pnuoq701g0vi7r07svh.apps.googleusercontent.com";
-
-
   const onSuccess = (res) => {
-    console.log("Login success! Current user: ", res.profileObject);
+    const details = jwt_decode(res.credential);
+
+    console.log("Login success! Current user: ", details);
   }
 
-  const onFailure = (res) => {
+  const onError = (res) => {
     console.log("Login failed!", res);
   }
 
   return (
-    <GoogleOAuthProvider>
-      <div>
-        <GoogleLogin 
-          clientId={clientId} 
-          buttonText="Entrar com o Google"
+      <div className={styles.googleButton}>
+        <GoogleLogin
           onSuccess={onSuccess}
-          onFailure={onFailure}
+          onError={onError}
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
         ></GoogleLogin>
       </div>
-    </GoogleOAuthProvider>
   );
 };

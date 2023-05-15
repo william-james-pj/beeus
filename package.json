@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-oauth/google": "^0.11.0",
     "formik": "^2.2.9",
-    "gapi-script": "^1.2.0",
+    "jwt-decode": "^3.1.2",
     "next": "13.2.4",
     "nookies": "^2.5.2",
     "react": "18.2.0",
