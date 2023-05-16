@@ -11,27 +11,37 @@ import { MainLayout } from '@/layouts/main';
 import { documentationEditorSchema } from '@/lib/documentationEditorSchema';
 import styles from '@/styles/documentationEditor.module.scss';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 
 const DocumentationEditor = () => {
+  const router = useRouter();
+  const data = router.query.documentation
+    ? JSON.parse(router.query.documentation)
+    : undefined;
   const [errorMsg, setErrorMsg] = useState('');
 
   const { userToken } = useAuth();
-  const { isLoading, createDocumentation, closeEditor } =
+  const { isLoading, createDocumentation, editDocumentation, closeEditor } =
     useDocumentationEditor();
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      tags: [],
-      content: '',
+      title: data?.title ?? '',
+      tags: data?.tags ?? [],
+      content: data?.content ?? '',
     },
     validationSchema: documentationEditorSchema,
     onSubmit,
   });
 
   async function onSubmit(values) {
+    if (data?.id) editDocument(values, data.id);
+    else createDocument(values);
+  }
+
+  async function createDocument(values) {
     if (
       !window.confirm(
         'Você tem certeza de que deseja publicar esta documentação?',
@@ -41,6 +51,29 @@ const DocumentationEditor = () => {
     setErrorMsg('');
 
     const { message } = await createDocumentation({
+      title: values.title,
+      content: values.content,
+      tags: values.tags,
+      token: userToken,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+  }
+
+  async function editDocument(values, id) {
+    if (
+      !window.confirm(
+        'Você tem certeza de que deseja editar esta documentação?',
+      )
+    )
+      return;
+    setErrorMsg('');
+
+    const { message } = await editDocumentation({
+      id,
       title: values.title,
       content: values.content,
       tags: values.tags,
@@ -77,7 +110,10 @@ const DocumentationEditor = () => {
                 <MdOutlineClose size={28} />
               </div>
 
-              <SaveDocumentationButton title="Publicar" isLoading={isLoading} />
+              <SaveDocumentationButton
+                title={data ? 'Salvar' : 'Publicar'}
+                isLoading={isLoading}
+              />
             </div>
 
             {errorMsg && (
@@ -98,7 +134,10 @@ const DocumentationEditor = () => {
 
             <TagsInput formik={formik} />
 
-            <TextEditor onChange={formik.handleChange} />
+            <TextEditor
+              onChange={formik.handleChange}
+              value={formik.values.content}
+            />
           </form>
         </MainLayout>
       </main>
