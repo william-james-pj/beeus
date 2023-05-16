@@ -1,0 +1,40 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $p-3;
+
+  .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .inputText {
+      width: 100%;
+      font-size: $p-5;
+
+      @include media-md {
+        font-size: $p-8;
+      }
+
+      color: $text-color;
+      background: transparent;
+      border: none;
+
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+
+      &::placeholder {
+        color: rgba($text-color, 0.8);
+      }
+    }
+  }
+  .errorText {
+    color: $error-color;
+    font-family: $inter-sans;
+    font-size: $font-size-sm;
+  }
+}
