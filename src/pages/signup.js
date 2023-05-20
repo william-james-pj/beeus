@@ -46,6 +46,28 @@ const SignUp = () => {
     resetForm({ values: '' });
   }
 
+  async function signUpWithGoogle(googleUser) {
+    const { name, email, sub } = googleUser;
+    setErrorMsg('');
+
+    const { message } = await signUp({
+      name: name,
+      email: email,
+      password: sub,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+  }
+
+  function setGoogleErrorMessage() {
+    setErrorMsg(
+      'Não foi possível concluir o cadastro com o Google. Por favor, verifique suas informações e tente novamente.',
+    );
+  }
+
   return (
     <>
       <Head>
@@ -104,7 +126,10 @@ const SignUp = () => {
                 <p>Ou</p>
                 <div className={styles.line} />
               </div>
-              <GoogleButton />
+              <GoogleButton
+                handleSuccess={signUpWithGoogle}
+                handleError={setGoogleErrorMessage}
+              />
             </div>
           </section>
         </AuthLayout>

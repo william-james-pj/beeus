@@ -4,40 +4,7 @@
 
 .googleButton {
   width: 100%;
-  background-color: $text-color;
-  border-radius: $p-1-5;
-  cursor: pointer;
-
-  padding: $p-3;
 
   display: flex;
   justify-content: center;
-  gap: $p-4;
-
-  transition: all 2s ease-in-out;
-
-  :hover {
-    opacity: 0.6;
-  }
-
-  > span {
-    color: $background-color;
-    font-size: $font-size-md;
-    font-family: $inter-sans;
-    font-weight: 600;
-  }
-
-  .imageContainer {
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-
-    .image {
-      object-fit: contain;
-      width: 100% !important;
-      position: relative !important;
-      height: unset !important;
-    }
-  }
 }

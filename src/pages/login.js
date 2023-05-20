@@ -40,6 +40,27 @@ const Login = () => {
     resetForm({ values: '' });
   }
 
+  async function loginWithGoogle(googleUser) {
+    const { email, sub } = googleUser;
+    setErrorMsg('');
+
+    const { message } = await signIn({
+      email: email,
+      password: sub,
+    });
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+  }
+
+  function setGoogleErrorMessage() {
+    setErrorMsg(
+      'Falha ao autenticar com o Google. Tente novamente mais tarde.',
+    );
+  }
+
   return (
     <>
       <Head>
@@ -87,7 +108,10 @@ const Login = () => {
                 <p>Ou</p>
                 <div className={styles.line} />
               </div>
-              <GoogleButton />
+              <GoogleButton
+                handleSuccess={loginWithGoogle}
+                handleError={setGoogleErrorMessage}
+              />
             </div>
           </section>
         </AuthLayout>
