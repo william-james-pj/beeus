@@ -1,0 +1,52 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.rankingLeaderCell {
+  width: 90%;
+  background-color: $card-color;
+
+  padding: $p-6 0;
+  border-radius: $p-2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $p-4;
+
+  @include media-md {
+    width: 100%;
+  }
+
+  .textPosition {
+    color: $text-color;
+    font-family: $inter-sans;
+    font-size: $font-size-md;
+
+    @include media-md {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .textName {
+    color: $text-color;
+    font-family: $inter-sans;
+    font-weight: 600;
+    font-size: $font-size-lg;
+
+    @include media-md {
+      font-size: $font-size-xl;
+    }
+  }
+
+  .points {
+    color: $text-color;
+    font-family: $inter-sans;
+
+    font-size: $font-size-md;
+
+    @include media-md {
+      font-size: $font-size-lg;
+    }
+  }
+}

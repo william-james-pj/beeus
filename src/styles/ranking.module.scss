@@ -1,0 +1,44 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.ranking {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+
+  margin-top: $p-5;
+
+  .pageTitle {
+    color: $text-color;
+    font-family: $cinzel-cursive;
+    font-size: $font-size-xxl;
+    font-weight: 600;
+  }
+
+  .leaderCellContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $p-3;
+
+    @include media-md {
+      flex-direction: row;
+      padding: 0 $p-4;
+    }
+  }
+
+  .cellContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $p-3;
+  }
+}
