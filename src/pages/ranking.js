@@ -3,10 +3,13 @@ import Head from 'next/head';
 
 import { RankingCell } from '@/components/ranking/RankingCell';
 import { RankingLeaderCell } from '@/components/ranking/RankingLeaderCell';
+import { useRanking } from '@/hooks/useRanking';
 import { MainLayout } from '@/layouts/main';
 import styles from '@/styles/ranking.module.scss';
 
 const Ranking = () => {
+  const { rankingLeaders, rankingItems } = useRanking();
+
   return (
     <>
       <Head>
@@ -18,15 +21,17 @@ const Ranking = () => {
             <span className={styles.pageTitle}>Ranking</span>
 
             <div className={styles.leaderCellContainer}>
-              <RankingLeaderCell />
-              <RankingLeaderCell />
-              <RankingLeaderCell />
+              {rankingLeaders.length > 0 ??
+                rankingLeaders.map((ranking, index) => (
+                  <RankingLeaderCell key={index} />
+                ))}
             </div>
 
             <div className={styles.cellContainer}>
-              <RankingCell />
-              <RankingCell />
-              <RankingCell />
+              {rankingItems.length > 0 ??
+                rankingItems.map((rankingItem, index) => (
+                  <RankingCell key={index} />
+                ))}
             </div>
           </div>
         </MainLayout>
