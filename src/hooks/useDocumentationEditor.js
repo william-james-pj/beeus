@@ -60,11 +60,11 @@ export function useDocumentationEditor() {
   async function deleteDocumentation({ id, token }) {
     setIsLoading(true);
 
-    const { message } = deleteDocumentationRequest({ id, token });
+    const { message } = await deleteDocumentationRequest({ id, token });
 
     if (message) {
       setIsLoading(false);
-      return { message };
+      return { errorMessage: message };
     }
 
     router.back();
