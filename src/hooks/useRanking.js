@@ -4,7 +4,6 @@ import { useState } from 'react';
 export function useRanking() {
   const [rankingLeaders, setRankingLeaders] = useState([]);
   const [rankingItems, setRankingItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   async function getRanking({ token }) {
     const { status, data } = await getRankingRequest({ token });
@@ -25,5 +24,5 @@ export function useRanking() {
     setRankingItems(data);
   }
 
-  return { isLoading, rankingLeaders, rankingItems, getRanking };
+  return { rankingLeaders, rankingItems, getRanking };
 }
