@@ -12,15 +12,9 @@ export function useRanking() {
 
     const firstElements = data.filter((_, index) => index >= 0 && index < 3);
 
-    const leaders = [];
-    firstElements.forEach((item, index) => {
-      if (index % 2 === 1) leaders.unshift(item);
-      else leaders.push(item);
-    });
+    data.splice(0, firstElements.length);
 
-    data.splice(0, 3);
-
-    setRankingLeaders(leaders);
+    setRankingLeaders(firstElements);
     setRankingItems(data);
   }
 
