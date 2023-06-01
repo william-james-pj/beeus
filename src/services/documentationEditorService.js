@@ -68,3 +68,25 @@ export async function editDocumentationRequest({
     };
   }
 }
+
+export async function deleteDocumentationRequest({ id, token }) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/documentation/${id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    return response.json();
+  } catch (err) {
+    return {
+      message:
+        'Desculpe, ocorreu um erro inesperado. Tente novamente mais tarde.',
+    };
+  }
+}
