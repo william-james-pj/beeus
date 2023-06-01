@@ -8,10 +8,11 @@ import { useRanking } from '@/hooks/useRanking';
 import { MainLayout } from '@/layouts/main';
 import styles from '@/styles/ranking.module.scss';
 import { useEffect } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 const Ranking = () => {
   const { userToken } = useAuth();
-  const { rankingLeaders, rankingItems, getRanking } = useRanking();
+  const { isLoading, rankingLeaders, rankingItems, getRanking } = useRanking();
 
   useEffect(() => {
     if (userToken) getRanking({ token: userToken });
@@ -26,6 +27,8 @@ const Ranking = () => {
         <MainLayout>
           <div className={styles.ranking}>
             <span className={styles.pageTitle}>Ranking</span>
+
+            {isLoading && <FaSpinner className={styles.spinner} size={32} />}
 
             <div className={styles.leaderCellContainer}>
               {rankingLeaders.length > 0 &&

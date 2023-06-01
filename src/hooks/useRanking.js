@@ -4,8 +4,10 @@ import { useState } from 'react';
 export function useRanking() {
   const [rankingLeaders, setRankingLeaders] = useState([]);
   const [rankingItems, setRankingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function getRanking({ token }) {
+    setIsLoading(true);
     const { status, data } = await getRankingRequest({ token });
 
     if (status && !data) return;
@@ -16,7 +18,8 @@ export function useRanking() {
 
     setRankingLeaders(firstElements);
     setRankingItems(data);
+    setIsLoading(false);
   }
 
-  return { rankingLeaders, rankingItems, getRanking };
+  return { isLoading, rankingLeaders, rankingItems, getRanking };
 }
