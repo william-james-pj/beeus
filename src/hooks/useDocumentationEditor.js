@@ -1,5 +1,6 @@
 import {
   createDocumentationRequest,
+  deleteDocumentationRequest,
   editDocumentationRequest,
 } from '@/services/documentationEditorService';
 import { useRouter } from 'next/router';
@@ -56,9 +57,30 @@ export function useDocumentationEditor() {
     return {};
   }
 
+  async function deleteDocumentation({ id, token }) {
+    setIsLoading(true);
+
+    const { message } = await deleteDocumentationRequest({ id, token });
+
+    if (message) {
+      setIsLoading(false);
+      return { errorMessage: message };
+    }
+
+    router.back();
+    setIsLoading(false);
+    return {};
+  }
+
   function closeEditor() {
     router.back();
   }
 
-  return { isLoading, createDocumentation, editDocumentation, closeEditor };
+  return {
+    isLoading,
+    createDocumentation,
+    editDocumentation,
+    deleteDocumentation,
+    closeEditor,
+  };
 }
