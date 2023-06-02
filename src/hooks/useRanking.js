@@ -7,7 +7,7 @@ export function useRanking() {
   const [isLoading, setIsLoading] = useState(true);
 
   async function getRanking({ token }) {
-    setIsLoading(true);
+
     const { status, data } = await getRankingRequest({ token });
 
     if (status && !data) return;
