@@ -1,0 +1,24 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+
+.container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  
+    margin-top: $p-5;
+
+    .title {
+        font-size: $font-size-xl;
+        font-family: $cinzel-cursive;
+    }
+
+    .container {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,53 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.documentationCard {
+    width: 30%;
+    height: 120px;
+    background-color: $card-color;
+    
+    padding: $p-3 $p-4;
+    border-radius: $p-1;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 5%;
+    
+    .textTitle {
+        color: $text-color;
+        font-family: $inter-sans;
+        font-size: $font-size-sm;
+        border-bottom-style: outset;
+        margin-bottom: 5%;
+
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        white-space: pre-wrap;
+        }
+
+    .contentContainer {
+        display: flex;
+        align-items: center;
+        
+        
+        .textContent {
+            color: $text-color;
+            font-weight: 600;
+            font-family: $inter-sans;
+            font-size: $font-size-xxs;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            white-space: pre-wrap;
+        }
+
+    }
+
+    
+}
