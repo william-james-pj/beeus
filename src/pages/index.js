@@ -5,7 +5,6 @@ import { DocumentationList } from '@/components/List/DocumentationList';
 import { MainLayout } from '@/layouts/main';
 
 const Home = () => {
-
   return (
     <>
       <Head>
@@ -13,7 +12,7 @@ const Home = () => {
       </Head>
       <main>
         <MainLayout>
-          <DocumentationList/>
+          <DocumentationList />
         </MainLayout>
       </main>
     </>

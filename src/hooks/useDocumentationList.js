@@ -1,28 +1,33 @@
-import { getDocumentationRequest, listDocumentationRequest } from '@/services/documentationService';
-import { useEffect, useState } from 'react';
+import {
+  getDocumentationByIdRequest,
+  listDocumentationRequest,
+} from '@/services/documentationService';
+import { useState } from 'react';
 
-export function useDocumentationList() {
-    const [data, setData] = useState([]);
+export function useDocumentation() {
+  const [documents, setDocuments] = useState([]);
+  const [selectedDocument, setSelectedDocument] = useState(undefined);
 
-    useEffect(() => {
-        listDocumentationRequest()
-            .then(res => {
-                setData(res.data);
-            })
-    }, [])
+  async function getDocumentations({ token }) {
+    const { status, data } = await listDocumentationRequest({ token });
 
-    return { data };
-}
+    if (status && !data) return;
 
-export function useDocumentationGet(id) {
-    const [data, setData] = useState([]);
+    setDocuments(data);
+  }
 
-    useEffect(() => {
-        getDocumentationRequest(id)
-            .then(res => {
-                setData(res.data);
-            })
-    }, [])
+  async function getDocumentationById({ id, token }) {
+    const { status, data } = await getDocumentationByIdRequest({ id, token });
 
-    return { data };
+    if (status && !data) return;
+
+    setSelectedDocument(data);
+  }
+
+  return {
+    documents,
+    selectedDocument,
+    getDocumentations,
+    getDocumentationById,
+  };
 }

@@ -1,4 +1,4 @@
-export async function listDocumentationRequest() {
+export async function listDocumentationRequest({ token }) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/documentation`,
@@ -6,6 +6,7 @@ export async function listDocumentationRequest() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -24,7 +25,7 @@ export async function listDocumentationRequest() {
   }
 }
 
-export async function getDocumentationRequest(id) {
+export async function getDocumentationByIdRequest({ id, token }) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/documentation/${id}`,
@@ -32,6 +33,7 @@ export async function getDocumentationRequest(id) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
