@@ -1,0 +1,59 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.rankingCell {
+  width: 90%;
+  background-color: $card-color;
+
+  padding: $p-3 $p-4;
+  border-radius: $p-1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include media-md {
+    width: 80%;
+    padding: $p-3 $p-6;
+  }
+
+  .nameContainer {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: $p-4;
+
+    .textPosition {
+      color: $text-color;
+      font-family: $inter-sans;
+      font-size: $font-size-md;
+
+      @include media-md {
+        font-size: $font-size-lg;
+      }
+    }
+
+    .textName {
+      color: $text-color;
+      font-family: $inter-sans;
+      font-weight: 600;
+      font-size: $font-size-md;
+
+      @include media-md {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+
+  .points {
+    color: $text-color;
+    font-family: $inter-sans;
+    font-size: $font-size-md;
+
+    @include media-md {
+      font-size: $font-size-lg;
+    }
+  }
+}
