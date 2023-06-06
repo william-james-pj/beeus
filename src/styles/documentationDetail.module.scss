@@ -1,0 +1,34 @@
+@import '@/styles/variables';
+@import '@/styles/fonts';
+@import '@/styles/mixins';
+
+.container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+  
+    padding: $p-5 $p-24;
+
+    .icons {
+        position: absolute;
+        right: $p-24;
+    }
+
+    .info {
+        font-size: $font-size-xxs;
+        font-family: $karma-slab;
+    }
+
+    .title {
+        font-size: $font-size-xl;
+        font-family: $cinzel-cursive;
+    }
+
+    .content {
+        font-size: $font-size-sm;
+        font-family: $karma-slab;
+    }
+}

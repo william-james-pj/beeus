@@ -1,6 +1,7 @@
 import { requireAuthentication } from '@/lib/requireAuthentication';
 import Head from 'next/head';
 
+import { DocumentationList } from '@/components/List/DocumentationList';
 import { MainLayout } from '@/layouts/main';
 
 const Home = () => {
@@ -10,7 +11,9 @@ const Home = () => {
         <title>Beeus</title>
       </Head>
       <main>
-        <MainLayout></MainLayout>
+        <MainLayout>
+          <DocumentationList />
+        </MainLayout>
       </main>
     </>
   );
