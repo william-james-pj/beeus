@@ -12,6 +12,11 @@
 
   margin-top: $p-5;
 
+  .icons {
+    position: absolute;
+    right: $p-3;
+  }
+
   .title {
     font-size: $font-size-xl;
     font-family: $cinzel-cursive;

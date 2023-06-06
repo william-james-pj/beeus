@@ -82,7 +82,9 @@ export async function deleteDocumentationRequest({ id, token }) {
       },
     );
 
-    return response.json();
+    return {
+      status: true,
+    };
   } catch (err) {
     return {
       message:

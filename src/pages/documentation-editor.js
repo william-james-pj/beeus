@@ -17,8 +17,8 @@ import { MdOutlineClose } from 'react-icons/md';
 
 const DocumentationEditor = () => {
   const router = useRouter();
-  const data = router.query.documentation
-    ? JSON.parse(router.query.documentation)
+  const data = router.query
+    ? router.query
     : undefined;
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -42,6 +42,9 @@ const DocumentationEditor = () => {
   }
 
   async function createDocument(values) {
+    let content = values.content.replaceAll("<p>", ""); //Formik retorna conteúdo envolto de tag <p>
+    content = content.replaceAll("</p>", "");
+
     if (
       !window.confirm(
         'Você tem certeza de que deseja publicar esta documentação?',
@@ -52,7 +55,7 @@ const DocumentationEditor = () => {
 
     const { message } = await createDocumentation({
       title: values.title,
-      content: values.content,
+      content: content,
       tags: values.tags,
       token: userToken,
     });
@@ -64,6 +67,9 @@ const DocumentationEditor = () => {
   }
 
   async function editDocument(values, id) {
+    let content = values.content.replaceAll("<p>", "");
+    content = content.replaceAll("</p>", "");
+    
     if (
       !window.confirm(
         'Você tem certeza de que deseja editar esta documentação?',
@@ -75,7 +81,7 @@ const DocumentationEditor = () => {
     const { message } = await editDocumentation({
       id,
       title: values.title,
-      content: values.content,
+      content: content,
       tags: values.tags,
       token: userToken,
     });

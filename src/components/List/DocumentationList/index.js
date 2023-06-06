@@ -1,7 +1,9 @@
 import { useAuth } from '@/contexts/authContext';
 import { useDocumentation } from '@/hooks/useDocumentationList';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { FaSpinner } from 'react-icons/fa';
+import { MdNoteAdd } from 'react-icons/md';
 import { DocumentationCard } from '../DocumentationCard';
 import styles from './documentationList.module.scss';
 
@@ -16,6 +18,11 @@ export function DocumentationList() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.icons}>
+        <Link href="documentation-editor">
+            <MdNoteAdd></MdNoteAdd>
+        </Link>
+      </div>
       <h1 className={styles.title}>Artigos</h1>
       <div className={styles.content}>
         {isLoading ? (
