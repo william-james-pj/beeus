@@ -1,3 +1,4 @@
+import { ProgressBar } from "@/components/ProgressBar";
 import { useDocumentationEditor } from '@/hooks/useDocumentationEditor';
 import { MainLayout } from '@/layouts/main';
 import { requireAuthentication } from '@/lib/requireAuthentication';
@@ -48,6 +49,8 @@ const DocumentationDetail = () => {
       </Head>
       <main>
         <MainLayout>
+         <ProgressBar />
+          
           <div className={styles.container}>
             <div className={styles.icons}>
                 <Link href={{ pathname: 'documentation-editor', query: selectedDocument }}>

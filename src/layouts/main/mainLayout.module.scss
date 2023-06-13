@@ -7,7 +7,7 @@
   height: auto;
 
   @include media-lg {
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .container {
@@ -18,9 +18,12 @@
   }
 
   .nav {
-    height: 100px;
-    background-color: $background-color;
     color: $text-color;
+    height: 100px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background-color: $background-color;
 
     &__content {
       height: 100%;
@@ -29,7 +32,6 @@
       justify-content: space-between;
 
       padding: $p-4;
-      position: relative;
 
       .image {
         object-fit: contain;
@@ -60,5 +62,6 @@
   .content {
     flex: 1;
     position: relative;
+    padding-top: 100px;
   }
 }
