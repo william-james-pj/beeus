@@ -62,7 +62,8 @@ const DocumentationDetail = () => {
               {selectedDocument?.author.name}
             </span>
             <h1 className={styles.title}>{selectedDocument?.title}</h1>
-            <p className={styles.content}>{selectedDocument?.content}</p>
+
+            <div className={styles.content} dangerouslySetInnerHTML={{ __html: selectedDocument?.content }} />
           </div>
         </MainLayout>
       </main>
