@@ -7,7 +7,7 @@ export const DocumentationCard = ({ data }) => {
       <Link href={`${data.id}`} className={styles.cardLink}>
         <span className={styles.textTitle}>{data.title}</span>
         <div className={styles.contentContainer}>
-          <span className={styles.textContent}>{data.content}</span>
+            <div className={styles.content} dangerouslySetInnerHTML={{ __html: data.content }} />
         </div>
       </Link>
     </div>
